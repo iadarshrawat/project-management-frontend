@@ -1,0 +1,442 @@
+/* =============================================================
+ * BoardPage.css – polished UI theme
+ * ===========================================================*/
+/* ---------- Global layout ---------- */
+:root {
+  --purple-start: #667eea;
+  --purple-end: #764ba2;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --task-hover: rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0
+}
+
+.app {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(135deg, var(--purple-start) 0%, var(--purple-end) 100%);
+  overflow: hidden;
+}
+
+/* ---------- Top‑bar ---------- */
+.top-bar {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-weight: 600;
+  font-size: 20px;
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.sidebar-toggle,
+.add-board-btn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  border-radius: 6px;
+  padding: 4px 6px;
+  transition: background .2s;
+}
+
+.sidebar-toggle:hover,
+.add-board-btn:hover {
+  background: rgba(255, 255, 255, 0.12)
+}
+
+/* ---------- Board area ---------- */
+.main-board {
+  flex: 1;
+  padding: 32px;
+  overflow: auto
+}
+
+.board-columns {
+  display: flex;
+  gap: 24px;
+  min-width: 960px
+}
+
+/* ---------- Column ---------- */
+.board-column {
+  position: relative;
+  width: 340px;
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  padding: 24px 20px 48px;
+  box-shadow: var(--shadow-lg);
+  transition: transform .15s;
+}
+
+.board-column:hover {
+  transform: translateY(-2px)
+}
+
+.column-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600
+}
+
+/* add‑task FAB inside column */
+.add-task-button {
+  position: absolute;
+  top: 25px;
+  right: 18px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: rgba(222, 218, 218, 0.12);
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s transform .15s;
+}
+
+.add-task-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg)
+}
+
+.add-task-button svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  pointer-events: none
+}
+
+/* ---------- Task card ---------- */
+.task-card {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-md);
+  cursor: grab;
+  transition: transform .15s, box-shadow .15s;
+}
+
+.task-card:active {
+  cursor: grabbing
+}
+
+.task-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg)
+}
+
+.task-title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #2d3748;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden
+}
+
+.task-desc {
+  font-size: 14px;
+  color: #4a5568;
+  margin-bottom: 14px;
+  line-height: 1.45;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden
+}
+
+.task-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px
+}
+
+/* priority chips */
+.priority {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .45px;
+  border: 1px solid
+}
+
+.priority.low {
+  background: rgba(72, 187, 120, .25);
+  color: #2f855a;
+  border-color: rgba(72, 187, 120, .4)
+}
+
+.priority.medium {
+  background: rgba(237, 137, 54, .25);
+  color: #c05621;
+  border-color: rgba(237, 137, 54, .4)
+}
+
+.priority.high {
+  background: rgba(245, 101, 101, .25);
+  color: #c53030;
+  border-color: rgba(245, 101, 101, .4)
+}
+
+/* task 3‑dot menu */
+.task-menu-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: none;
+  border: none;
+  color: #718096;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 4px;
+  padding: 2px 6px;
+  transition: background .15s
+}
+
+.task-menu-btn:hover {
+  background: var(--task-hover)
+}
+
+.task-menu {
+  position: absolute;
+  top: 30px;
+  right: 6px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  z-index: 60;
+  width: 130px;
+  overflow: hidden
+}
+
+.task-menu button {
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .15s
+}
+
+.task-menu button:hover {
+  background: #f1f5f9
+}
+
+/* ---------- Empty column indicator ---------- */
+.empty-column {
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  font-style: italic;
+  margin-top: 20px
+}
+
+/* ---------- Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 12px
+}
+
+.modal {
+  background: #fff;
+  border-radius: 14px;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px 0
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  cursor: pointer
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px
+}
+
+.modal-body input,
+.modal-body textarea,
+.modal-body select {
+  padding: 10px 12px;
+  border: 1px solid #d2d6dc;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 14px
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 0 24px 24px
+}
+
+.modal-footer button:last-child {
+  background: var(--purple-start);
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .2s
+}
+
+.modal-footer button:last-child:hover {
+  background: #5a67d8
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 260px;
+  background: rgba(0, 0, 0, .9);
+  color: #fff;
+  transform: translateX(-100%);
+  transition: transform .3s cubic-bezier(.4, 0, .2, 1);
+  z-index: 900;
+  display: flex;
+  flex-direction: column
+}
+
+.sidebar-open {
+  transform: translateX(0)
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, .15)
+}
+
+.sidebar-close {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 2px 6px
+}
+
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px
+}
+
+.board-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px
+}
+
+.board-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .04);
+  color: #e2e8f0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .2s
+}
+
+.board-item:hover {
+  background: rgba(255, 255, 255, .12)
+}
+
+.board-item.active {
+  background: var(--purple-start);
+  color: #fff
+}
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .4);
+  z-index: 850
+}
+
+button svg,
+svg.lucide {
+  width: 1em;         /* scale with font‑size  */
+  height: 1em;
+  stroke: currentColor;
+  fill: none;         /* Lucide is stroke‑only */
+  pointer-events: none; /* let clicks fall through */
+}
+
+.add-task-button,
+.modal-close {
+  color: #fff;           /*   <— visible against dark bg   */
+}
+
+@media(max-width:640px) {
+  .sidebar {
+    width: 72%
+  }
+
+  .board-columns {
+    min-width: 100%
+  }
+
+  .main-board {
+    padding: 20px
+  }
+}
