@@ -415,16 +415,16 @@ body {
 
 button svg,
 svg.lucide {
-  width: 1em;         /* scale with font‑size  */
+  width: 1em;         
   height: 1em;
   stroke: currentColor;
-  fill: none;         /* Lucide is stroke‑only */
-  pointer-events: none; /* let clicks fall through */
+  fill: none;       
+  pointer-events: none; 
 }
 
 .add-task-button,
 .modal-close {
-  color: #fff;           /*   <— visible against dark bg   */
+  color: #fff;       
 }
 
 @media(max-width:640px) {

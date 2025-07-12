@@ -1,7 +1,4 @@
-/* =========================================================
- * utils.ts  – shared constants, types & API helper
- * =======================================================*/
-export const API_BASE = "http://localhost:9000/api";
+export const API_BASE = "https://project-management-backend-grzu.onrender.com/";
 
 export const STATUS_COLUMNS = ["TO_DO", "IN_PROGRESS", "DONE"] as const;
 export type Status = typeof STATUS_COLUMNS[number];

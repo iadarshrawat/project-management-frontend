@@ -3,17 +3,16 @@ import { X, Folder, Plus } from 'lucide-react';
 import type { Board } from '../assets/utils';
 import '../App.css';
 
-/* ---------- props ---------- */
+
 interface Props {
   boards: Board[];
-  selected: Board | null;          // ← renamed
-  onSelect(b: Board): void;        // ← renamed
+  selected: Board | null;         
+  onSelect(b: Board): void;        
   isOpen: boolean;
   onClose(): void;
-  onNew?(): void;                  //  optional “+ Board” handler
+  onNew?(): void;                 
 }
 
-/* ---------- component ---------- */
 const Sidebar: React.FC<Props> = ({
   boards,
   selected,
@@ -61,7 +60,7 @@ const Sidebar: React.FC<Props> = ({
                 }`}
                 onClick={() => {
                   onSelect(b);
-                  onClose();               // auto‑close on mobile
+                  onClose();             
                 }}
               >
                 <Folder size={18} />

@@ -3,7 +3,6 @@ import Modal from "./Modal";
 import {
   STATUS_COLUMNS,
   STATUS_LABELS,
-  type Status,
   type Task,
   api,
 } from "../assets/utils";

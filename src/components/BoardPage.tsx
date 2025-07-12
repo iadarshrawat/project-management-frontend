@@ -7,20 +7,10 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import { CSS } from "@dnd-kit/utilities";
-import {
-  SortableContext,
-  useSortable,
-  verticalListSortingStrategy,
-  arrayMove,
-} from "@dnd-kit/sortable";
-import { format } from "date-fns";
-import { ChevronDown, Plus } from "lucide-react";
 
 import {
   api,
   STATUS_COLUMNS,
-  STATUS_LABELS,
   type Task,
   type Status,
   type Board,
@@ -34,11 +24,10 @@ import Modal from "./Modal";
 
 import "../App.css";
 
-/* ---------------------- Board types for dropdown --------------- */
+
 const BOARD_TYPES = ["FRONTEND", "MARKETING"] as const;
 type BoardType = (typeof BOARD_TYPES)[number];
 
-/* ---------------------- Create‑Board Modal --------------------- */
 const CreateBoardModal: React.FC<{
   onAdd: (b: Board) => void;
   onClose: () => void;
@@ -102,7 +91,6 @@ const CreateBoardModal: React.FC<{
   );
 };
 
-/* ---------------------- BoardPage Component -------------------- */
 export function BoardPage() {
   const sensors = useSensors(
     useSensor(PointerSensor, {

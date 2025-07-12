@@ -22,7 +22,7 @@ export const TaskCard: React.FC<{
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    touchAction: 'manipulation', // improves drag responsiveness on mobile
+    touchAction: 'manipulation', 
   };
 
   return (
