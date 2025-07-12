@@ -1,4 +1,4 @@
-export const API_BASE = "https://project-management-backend-grzu.onrender.com/";
+export const API_BASE = "https://project-management-backend-grzu.onrender.com/api";
 
 export const STATUS_COLUMNS = ["TO_DO", "IN_PROGRESS", "DONE"] as const;
 export type Status = typeof STATUS_COLUMNS[number];
